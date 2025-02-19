@@ -2,7 +2,7 @@ import React from "react";
 import "./colorPicker.css";
 
 function ColorPicker() {
-  const [color, setColor] = React.useState("#000000");
+  const [color, setColor] = React.useState("#adadad");
   document.body.style.backgroundColor = color;
 
   const handleChange = (e) => {

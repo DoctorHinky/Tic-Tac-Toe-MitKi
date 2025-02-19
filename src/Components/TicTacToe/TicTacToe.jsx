@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./TicTacToe.css";
 
@@ -8,7 +8,7 @@ function TicTacToe() {
   const [board, setBoard] = useState(initArr);
   const [isPlayersTurn, setIsPlayersTurn] = useState(true);
   const [isEasyMode, setIsEasyMode] = useState(true);
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#544354");
 
   const checkWinner = (board) => {
     const winningCombos = [
@@ -123,7 +123,15 @@ function TicTacToe() {
 
   const handleChange = (e) => {
     setColor(e.target.value);
+    localStorage.setItem("colorPicker", e.target.value);
   };
+
+  useEffect(() => {
+    const color = localStorage.getItem("colorPicker");
+    if (color) {
+      setColor(color);
+    }
+  }, []);
 
   return (
     <div className="container" style={{ backgroundColor: color }}>
