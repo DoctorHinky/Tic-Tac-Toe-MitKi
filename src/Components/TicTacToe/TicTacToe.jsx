@@ -8,6 +8,7 @@ function TicTacToe() {
   const [board, setBoard] = useState(initArr);
   const [isPlayersTurn, setIsPlayersTurn] = useState(true);
   const [isEasyMode, setIsEasyMode] = useState(true);
+  const [color, setColor] = useState("#000000");
 
   const checkWinner = (board) => {
     const winningCombos = [
@@ -120,8 +121,31 @@ function TicTacToe() {
     setIsPlayersTurn(true);
   };
 
+  const handleChange = (e) => {
+    setColor(e.target.value);
+  };
+
   return (
-    <div className="container">
+    <div className="container" style={{ backgroundColor: color }}>
+      <div
+        style={{
+          width: "60%",
+          margin: "auto",
+          display: "flex",
+          alignItems: "center",
+          height: "50px",
+          gap: "10px",
+        }}
+      >
+        <label htmlFor="colorContainer">Farbe ändern:</label>
+        <input
+          type="color"
+          onChange={handleChange}
+          id="colorContainer"
+          value={color}
+          style={{ border: "2px solid #000000" }}
+        />
+      </div>
       <h1>Tic-Tac-Toe mit KI</h1>
       <div className="board">
         {board.map((cell, index) => (
